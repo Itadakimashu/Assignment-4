@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="d-flex">
+
+{% for blog in blogs %}
+    <div class="card text-center m-3" style="width: 18rem; height: 18rem;">
+        <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{blog.title}}</h5>
+        <p class="text-secondary">by {{blog.aurthor}}</p>
+        <p class="text-secondary">{{blog.pub_date}}</p>
+        <p class="card-text"> {{ blog.body | truncatewords:15 }}</p>
+        <a href="{% url 'delete' blog.id %}" class="btn btn-danger mt-auto">Delete</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock content %}
